@@ -1,0 +1,78 @@
+.game-box{
+    display: block;
+    padding-top: 50px;
+
+}
+.game-show{
+    display: block;
+}
+.game-show ul{
+    overflow: hidden;
+}
+
+.game-show ul >li{
+    width: 50%;
+    float: left;
+    padding:10px 15px;
+    text-align: center;
+}
+.game-show ul >li img{
+    display: inline-block;
+    width:100%;
+}
+
+.wx-detail{
+    background-color: #fef1e4;
+}
+.wx-detail ul{
+    overflow: hidden;
+}
+.wx-detail li{
+    width: 33.333%;
+    float: left;
+    padding:20px 20px 20px 20px;
+    position: relative;
+
+}
+.wx-detail li>dt{
+    font-size: 20px;
+    /*padding-left: 10px;*/
+    letter-spacing: 4px;
+}
+
+.wx-detail li> dd{
+    display: block;
+    /*padding: 10px;*/
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 25px;
+    letter-spacing:2px;
+    color: #B8B8B8;
+    /*padding:20px;*/
+}
+
+.logo-look-more,.logo-more-game{
+    display: block;
+    width: 90px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.logo-more{
+    position: absolute;
+    top:10px;
+    right:30px;
+    width: 50px;
+    height: 30px;
+    background: url("../image/more.png") no-repeat center;
+}
+
+.logo-look-more{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    background: url("../image/look-more.png") no-repeat center;
+}
+.logo-more-game{
+    /*margin-bottom: 20px;*/
+    background: url("../image/more-game.png") no-repeat center;
+}

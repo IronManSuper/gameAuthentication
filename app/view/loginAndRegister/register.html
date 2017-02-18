@@ -1,0 +1,160 @@
+<link rel="stylesheet" href="./view/loginAndRegister/css/register.css"/>
+<div class="register">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-2">
+
+                <form class="form-horizontal" name="register_form" role="form" ng-submit="submitRegisterUer()" novalidate>
+
+                    <div class="form-group">
+                        <div class="col-xs-offset-3 col-xs-9" style="position: relative;">
+                            <h2 class="text-center" style="margin-bottom: 20px;">芒芒注册</h2>
+                            <div alert-bar class="alert_bar" message="tipService.message" type="tipService.type"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="col-xs-3 control-label">手&nbsp;机</label>
+                        <div class="col-xs-9 has-feedback"
+                             ng-class="{'has-success':register_form.phone.$valid,'has-error':register_form.phone.$invalid && !register_form.phone.$pristine}">
+                            <input type="text" name="phone" or-phone ng-pattern="/^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/" ng-model="registerUser.phone"
+                                   class="form-control" id="phone" placeholder="请输入手机号" required/>
+                            <span class="glyphicon glyphicon-ok form-control-feedback"
+                                  ng-show="register_form.phone.$valid"></span>
+                            <span class="glyphicon glyphicon-remove form-control-feedback"
+                                  ng-show="register_form.phone.$invalid && !register_form.phone.$pristine"></span>
+                            <div class="errorShow" ng-messages="register_form.phone.$error"
+                                 ng-if="register_form.phone.$invalid && !register_form.phone.$pristine">
+                                <p ng-message="required">*请输入手机号</p>
+                                <p ng-message="pattern">*手机号码格式不正确</p>
+                                <p ng-message="orExist">*改手机号已存在，请更换手机号码</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="validateCode" class="col-xs-3 control-label">验证码</label>
+                        <div class="col-xs-5 has-feedback"
+                             ng-class="{'has-success':register_form.verificationCode.$valid,'has-error':register_form.verificationCode.$invalid && !register_form.verificationCode.$pristine}">
+                            <input type="text" name="verificationCode"
+                                   ng-pattern="/^[0-9]*$/"
+                                   ng-model="registerUser.verificationCode"
+                                   code-compare="scode"
+                                   class="form-control"
+                                   id="validateCode"
+                                   placeholder="请输入验证码" required/>
+                            <span class="glyphicon glyphicon-ok form-control-feedback"
+                                  ng-show="register_form.verificationCode.$valid"></span>
+                            <span class="glyphicon glyphicon-remove form-control-feedback"
+                                  ng-show="register_form.verificationCode.$invalid && !register_form.verificationCode.$pristine"></span>
+
+                            <div class="errorShow" ng-messages="register_form.verificationCode.$error"
+                                 ng-if="register_form.verificationCode.$invalid && !register_form.verificationCode.$pristine">
+                                <p ng-message="required">*请输入验证码</p>
+                                <p ng-message="pattern">*请输入数值验证码</p>
+                                <p ng-message="codeCompare">*验证码错误</p>
+                            </div>
+                        </div>
+                        <div style="padding-left: 0 !important;" class="col-xs-4 has-feedback"><!---->
+                            <button class="btn col-xs-12" type="button" ng-disabled="register_form.phone.$invalid || orClick" ng-click="getValidateCode(registerUser.phone)">获取验证码&nbsp;{{timing}}</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-xs-3 control-label">密&nbsp;码</label>
+                        <div class="col-xs-9 has-feedback"
+                             ng-class="{'has-success':register_form.password.$valid,'has-error':register_form.password.$invalid && !register_form.password.$pristine}">
+                            <input type="password" name="password" ng-model="registerUser.password" ng-minlength="6"
+                                   ng-maxlength="32" class="form-control" id="password" placeholder="请输入密码" required/>
+                            <span class="glyphicon glyphicon-ok form-control-feedback"
+                                  ng-show="register_form.password.$valid"></span>
+                            <span class="glyphicon glyphicon-remove form-control-feedback"
+                                  ng-show="register_form.password.$invalid && !register_form.password.$pristine"></span>
+
+                            <div class="errorShow" ng-messages="register_form.password.$error"
+                                 ng-if="register_form.password.$invalid && !register_form.password.$pristine">
+                                <p ng-message="required">*请输入密码</p>
+                                <p ng-message="minlength">*密码不能小于6个字符</p>
+                                <p ng-message="maxlength">*密码不能大于32个字符</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password" class="col-xs-3 control-label">确认密码</label>
+                        <div class="col-xs-9 has-feedback"
+                             ng-class="{'has-success':register_form.confirm_password.$valid,'has-error':register_form.confirm_password.$invalid && !register_form.confirm_password.$pristine}">
+                            <input type="password" password-compare="registerUser.password" name="confirm_password" ng-model="registerUser.confirm_password"
+                                   ng-minlength="6" ng-maxlength="32" class="form-control" id="confirm_password"
+                                   placeholder="请输入确认密码" required/>
+                            <span class="glyphicon glyphicon-ok form-control-feedback"
+                                  ng-show="register_form.confirm_password.$valid"></span>
+                            <span class="glyphicon glyphicon-remove form-control-feedback"
+                                  ng-show="register_form.confirm_password.$invalid && !register_form.confirm_password.$pristine"></span>
+
+                            <div class="errorShow" ng-messages="register_form.confirm_password.$error"
+                                 ng-if="register_form.confirm_password.$invalid && !register_form.confirm_password.$pristine">
+                                <p ng-message="required">*请输入密码</p>
+                                <p ng-message="minlength">*密码不能小于6个字符</p>
+                                <p ng-message="maxlength">*密码不能大于32个字符</p>
+                                <p ng-message="pwdCompare">*两次输入密码不一致</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="realName" class="col-xs-3 control-label">真实姓名</label>
+                        <div class="col-xs-9 has-feedback"
+                             ng-class="{'has-success':register_form.realName.$valid,'has-error':register_form.realName.$invalid && !register_form.realName.$pristine}">
+                            <input type="text" name="realName" ng-pattern="/^[\u4e00-\u9fa5]{2,4}$/"
+                                   ng-model="registerUser.realName" class="form-control" id="realName"
+                                   placeholder="请输入真实姓名" required/>
+                            <span class="glyphicon glyphicon-ok form-control-feedback"
+                                  ng-show="register_form.realName.$valid"></span>
+                            <span class="glyphicon glyphicon-remove form-control-feedback"
+                                  ng-show="register_form.realName.$invalid && !register_form.realName.$pristine"></span>
+                            <div class="errorShow"
+                                 ng-show="register_form.realName.$invalid && !register_form.realName.$pristine">
+                                <p ng-show="register_form.realName.$error.required">*请输入真实姓名</p>
+                                <p ng-show="register_form.realName.$error.pattern">*姓名输入不正确</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="idNumber" class="col-xs-3 control-label">二代身份证</label>
+                        <div class="col-xs-9 has-feedback"
+                             ng-class="{'has-success':register_form.idNumber.$valid,'has-error':register_form.idNumber.$invalid && !register_form.idNumber.$pristine}">
+                            <input type="text" name="idNumber"
+                                   ng-pattern="/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/"
+                                   ng-model="registerUser.idNumber" class="form-control" id="idNumber"
+                                   placeholder="请输入二代身份证号码" required/>
+                            <span class="glyphicon glyphicon-ok form-control-feedback"
+                                  ng-show="register_form.idNumber.$valid"></span>
+                            <span class="glyphicon glyphicon-remove form-control-feedback"
+                                  ng-show="register_form.idNumber.$invalid && !register_form.idNumber.$pristine"></span>
+                            <div class="errorShow"
+                                 ng-show="register_form.idNumber.$invalid && !register_form.idNumber.$pristine">
+                                <p ng-show="register_form.idNumber.$error.required">*请输入身份证号</p>
+                                <p ng-show="register_form.idNumber.$error.pattern">*身份证输入不正确</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-xs-offset-3 col-xs-9">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="check" ng-model="registerUser.check"
+                                           ng-checked="registerUser.check" required>
+                                    <a href="javascript:void(0);" ng-disabled="true" style="font-size: 12px;">我已经阅读并同意《网络游戏服务格式化协议必备条款》</a>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-offset-3 col-xs-9">
+                            <!--<button type="submit" class="btn btn-default">Sign in</button>-->
+                            <button class="btn btn-warning col-xs-12" ng-disabled="register_form.$invalid">注册</button>
+                            <!---->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,141 @@
+*{
+    padding:0;
+    margin:0;
+    font-family:"Microsoft YaHei",'微软雅黑';!important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html,body{
+    font-size: 16px;
+    width: 100%;
+    /*height:100%;*/
+    display: block;
+}
+
+body{
+    min-width: 1000px;
+    position: relative;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    width: 980px !important;
+    max-width:none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.col-md-2{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.btn-warning{
+    background-color:#FFC90A;
+    border-color: #FFC90A;
+}
+
+.btn-warning:hover{
+    background-color: #FFB70A;
+    border-color: #FFB70A;
+}
+
+.form-group{
+    position: relative !important;
+}
+
+
+.alert_bar{
+    position:absolute;
+    z-index: 99;
+    top:0;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    -webkit-border-radius:10px 10px 0 0;
+    -moz-border-radius:10px 10px 0 0;
+    border-radius:10px 10px 0 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+header{
+    display: block;
+    background-color: #fe6900;
+    position: relative;
+    z-index: 1;
+    top:0;
+    left: 0;
+    width:100%;
+}
+
+header a{
+    color: white;
+    font-weight:bold;
+    letter-spacing: 2px;
+    line-height: 40px;
+    padding:0 10px; !important;
+    display: block;
+}
+
+.navbar-nav>li>a:hover{
+    background:transparent;!important;
+}
+.navbar-nav>li>a:active{
+    background:transparent;!important;
+}
+.navbar-nav>li>a:focus{
+    background:transparent;!important;
+}
+
+.wx-container{
+    display: block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 24px;
+}
+
+
+.show-container{
+    display: block;
+    position: relative;
+    width: 100%;
+    background-color: #eff7ff;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 30px;
+    border-radius: 10px;
+    border:1px solid #B8B8B8;
+    overflow: hidden;
+}
+
+.show-container article{
+    line-height: 30px;
+    margin: 0 auto;
+}
+
+.show-container article>img{
+    display: inline-block;
+}
+
+footer{
+    display: block;
+    background-color: #F8F8F8;
+    position: relative;
+    width: 100%;
+}
+
+footer p{
+    font-family:"Microsoft YaHei",'微软雅黑';!important;
+    padding: 30px 0;
+    letter-spacing: 2px;
+}

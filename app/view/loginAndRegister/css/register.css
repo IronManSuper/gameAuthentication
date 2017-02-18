@@ -1,0 +1,19 @@
+.register{
+    padding:100px 0 100px 0;
+}
+
+.register .form-group{
+    margin:25px 0;!important;
+}
+
+.errorShow{
+    position: absolute;
+}
+
+.errorShow p{
+    padding-left: 10px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    line-height: 25px;
+    color: red;
+}

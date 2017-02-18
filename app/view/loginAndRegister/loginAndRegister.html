@@ -1,0 +1,72 @@
+<link href="./view/loginAndRegister/css/login.css" rel="stylesheet" type="text/css"/>
+<div class="login" ng-controller="loginCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="login-logo col-xs-8 cell">
+                <div class="login-logo-box">
+                    <img src="./view/loginAndRegister/image/login-img.png" alt="">
+                </div>
+            </div>
+            <div class="col-xs-4 cell" style="padding: 20% 0;">
+                <div class="login-title">
+                    <div alert-bar class="alert_bar" message="tipService.message" type="tipService.type"></div>
+                </div>
+                <div class="login-module">
+                    <form class="" name="login_form" ng-submit="submitUser(login_form.$valid)" role="form" novalidate>
+                        <div class="form-group ">
+                            <div class="input-group 'has-error">
+                                <span class="input-group-addon">手&nbsp;机</span>
+                                <input name="phone" ng-model="user.phone" type="text"  ng-pattern="/^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/" class="form-control" placeholder="请输入手机号" required>
+                            </div>
+
+                            <div class="errorShow" ng-messages="login_form.phone.$error" ng-if="login_form.phone.$invalid && !login_form.phone.$pristine">
+                                <div class="" ng-message="required">
+                                    <p>*请输入手机号</p>
+                                </div>
+
+                                <div class="" ng-message="pattern">
+                                    <p>*请正确的手机号码</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">密&nbsp;码</span>
+                                <input name="password" ng-model="user.password" type="password" class="form-control" placeholder="请输入密码" required>
+                            </div>
+                            <div class="errorShow" ng-messages="login_form.password.$error" ng-if="login_form.password.$invalid && !login_form.password.$pristine">
+                                <div class="" ng-message="required">
+                                    <p>*请输入密码</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input name="validCode" ng-model="user.validCode" compare="validate" type="text" class="form-control" placeholder="请输入验证码" required/>
+                                <span class="input-group-btn"><a href="javascript:void(0);" ng-click="getValidate()" ng-model="validate" ng-bind="validate" class="btn btn-default form-control validateCode"></a></span>
+                            </div>
+
+                            <div class="errorShow" ng-messages="login_form.validCode.$error" ng-if="login_form.validCode.$invalid && !login_form.validCode.$pristine">
+                                <div class="" ng-message="required">
+                                    <p>*请输入验证码</p>
+                                </div>
+                                <div class="" ng-message="compare">
+                                    <p>*验证码输入不正确</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group col-xs-12">
+                               <button type="submit" class="btn btn-warning col-xs-12" ng-disabled="login_form.$invalid">登录</button>
+                            </div>
+                        </div>
+                    </form>
+                    <p style="font-size: 12px; text-align: right;"><a ui-sref="register">没有账号?就此注册</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+.show-container{
+    display: block;
+    position: relative;
+    width: 100%;
+    background-color: #EEF7EF;
+    padding:10px;
+    border-radius: 10px;
+}
